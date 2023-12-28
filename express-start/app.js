@@ -1,3 +1,12 @@
+/*
+Author: Cole Perry
+
+Description: The backend of a webpage which takes a recipe webpage's URL
+and extracts relevant information to the recipe. Uses OpenAI API requests
+to achieve the extraction.
+
+Date of last update: 12/28/2023
+*/
 const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
@@ -28,7 +37,7 @@ app.get('/processLink', async (req, res) => {
     const url = req.query.url;
 
     if (!url) {
-      return res.status(400).json({ error: 'URL parameter is required' });
+      return res.status(400).json({ error: 'Must enter a URL' });
     }
 
     //Gathering the HTML text content from the url's page
@@ -42,8 +51,8 @@ app.get('/processLink', async (req, res) => {
     //appears on the website when looking at a recipe)
     var textContent = $('body').text(); 
 
-    //Recipes are typically included in the first 12,000 characters,
-    //so we only gather the first 12,000 characters as to not overload
+    //Recipes are typically included in the first 13,000 characters,
+    //so we only gather the first 13,000 characters as to not overload
     //the API request with too long of a query
     const maxLength = 13000;
     if (textContent.length > maxLength) {
@@ -61,6 +70,14 @@ app.get('/processLink', async (req, res) => {
   }
 });
 
+/*
+Purpose: Makes an API request to OpenAI API and returns the result
+of the chat.
+
+Parameters: textHTML - The HTML content of the webpage
+
+Return: The result of the API request
+*/
 async function parseRecipe(textHTML) {
     
     const query = "Take this text and tell me the ingredients, amounts, and directions with no extra information. You must include a section named 'Ingredients' and a section named 'Directions' or else it won't be good: " + textHTML;
@@ -94,7 +111,7 @@ app.get('/parseRecipeText', async (req, res) => {
     let ingredientsArray = midArrayNext[0].split('\n');
     let ingredientsString = '';
 
-    //iterating over ingredients and constructing string of ingredients
+    //Iterating over ingredients and constructing string of ingredients
     //which will be formatted
     for (let i = 0; i < ingredientsArray.length; i++) {
         if (ingredientsArray[i] === '' || ingredientsArray[i] === 'Directions') {
@@ -125,13 +142,3 @@ app.get('/parseRecipeText', async (req, res) => {
 
     res.send(finalArray);
 });
-
-async function fetchHTMLContent(url) {
-    try {
-      const response = await axios.get(url);
-      return response.data; // This holds the HTML content
-    } catch (error) {
-      console.error('Error fetching HTML:', error);
-      throw error;
-    }
-  }
