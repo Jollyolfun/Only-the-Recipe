@@ -16,7 +16,7 @@ app.use(cors());
 
 const OpenAI = require('openai');
 const openai = new OpenAI({
-    apiKey: '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'
+    apiKey: 'included in deployment'
 });
 
 
