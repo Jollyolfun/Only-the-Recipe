@@ -1,0 +1,128 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+body {
+  background-color: #f48e83; 
+}
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.textBox {
+  border-radius: 5px;
+  height: 30px;
+  width: 200px;
+  margin-right: 5px;
+}
+.RecipeWrap {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Recipe {
+  
+  background-color: #eddfce; 
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); 
+  border-radius: 500px;
+  padding-top: 60px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid;
+  width: 500px;
+  height: 200px;
+}
+.header1 {
+  font-family: 'Lucida Handwriting', cursive; /* Set the font to Lucida Handwriting or any cursive font */
+}
+.ingredients {
+  width: 600px;
+  background-color: #eddfce; 
+  width: 300px; /* Adjust as needed */
+  border: solid;
+  margin-top: 20px; /* Space between Recipe and Ingredients */
+  white-space: "pre-line";
+  max-height: 300;
+  overflow: hidden;
+  transition: max-height 0.3s ease; /* Adjust the duration and easing as needed */
+
+}
+
+.header1 {
+  margin-bottom: 20px;
+}
+
+
+.blurred-content {
+  filter: blur(5px); /* Adjust the blur radius as needed */
+  pointer-events: none; /* Prevent interaction with blurred content */
+}
+
+.loading-overlay {
+
+  position: fixed; /* Ensure it's fixed in place */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Set a high z-index to ensure it's on top */
+
+  bottom: -100% !important; /* Use !important to override inline styles */
+  transition: bottom 1s ease;
+
+}
+.loading-overlay.active {
+  bottom: 50%; /* Position in the middle */
+}
+.loading-content {
+  border: solid;
+  height: 300px;
+  width: 500px;
+  background-color: #eddfce;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.load {
+  margin-top: 110px;
+}
