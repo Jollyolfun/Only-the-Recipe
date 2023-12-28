@@ -67,18 +67,17 @@ body {
   height: 200px;
 }
 .header1 {
-  font-family: 'Lucida Handwriting', cursive; /* Set the font to Lucida Handwriting or any cursive font */
+  font-family: 'Lucida Handwriting', cursive; 
 }
 .ingredients {
   width: 600px;
   background-color: #eddfce; 
-  width: 300px; /* Adjust as needed */
+  width: 300px; 
   border: solid;
-  margin-top: 20px; /* Space between Recipe and Ingredients */
+  margin-top: 20px; 
   white-space: "pre-line";
   max-height: 300;
-  overflow: hidden;
-  transition: max-height 0.3s ease; /* Adjust the duration and easing as needed */
+
 
 }
 
@@ -88,13 +87,13 @@ body {
 
 
 .blurred-content {
-  filter: blur(5px); /* Adjust the blur radius as needed */
-  pointer-events: none; /* Prevent interaction with blurred content */
+  filter: blur(5px); 
+  pointer-events: none; 
 }
 
 .loading-overlay {
 
-  position: fixed; /* Ensure it's fixed in place */
+  position: fixed; 
   top: 0;
   left: 0;
   width: 100%;
@@ -102,14 +101,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999; /* Set a high z-index to ensure it's on top */
-
-  bottom: -100% !important; /* Use !important to override inline styles */
-  transition: bottom 1s ease;
+  z-index: 9999; 
 
 }
 .loading-overlay.active {
-  bottom: 50%; /* Position in the middle */
+  bottom: 50%; 
 }
 .loading-content {
   border: solid;
