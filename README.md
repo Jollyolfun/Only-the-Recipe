@@ -15,3 +15,5 @@ N - Node.js
 
 
 This app uses an Express/Node.js backend, a React/Node.js frontend, and also utilizes API calls to OpenAI API to aid in parsing of recipe information.
+
+This was also launched on AWS, but was later taken down after I gained sufficient practice in it.
